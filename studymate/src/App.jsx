@@ -1,12 +1,41 @@
-import React from 'react'
-import Demo from './Demo'
+import React, { useState } from "react";
+import { FaDownload, FaEye } from "react-icons/fa";
+import "./App.css";
 
-const App = () => {
+function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpen = () => setIsOpen(true);
+  const handleClose = () => setIsOpen(false);
+
   return (
-    <div>
-      <Demo/>
+    <div className="app">
+      <h1>PDF Viewer</h1>
+
+      <div className="buttons">
+        <button className="icon-btn" onClick={handleOpen}>
+          <FaEye /> Open
+        </button>
+
+        <a href="/sample.pdf" download className="icon-btn">
+          <FaDownload /> Download
+        </a>
+      </div>
+
+      {isOpen && (
+        <div className="overlay" onClick={handleClose}>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <iframe
+              src="/sample.pdf"
+              title="PDF"
+              width="100%"
+              height="100%"
+            ></iframe>
+          </div>
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
