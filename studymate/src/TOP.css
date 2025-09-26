@@ -1,0 +1,28 @@
+h3{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    color: white;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.d{
+    background-color: black;
+    border-radius: 10px;
+}
+
+h3 {
+  animation: blink-animation 1.5s steps(2, start) infinite;
+}
+
+
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
