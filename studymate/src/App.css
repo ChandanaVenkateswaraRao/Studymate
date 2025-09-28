@@ -1,313 +1,242 @@
-/* ===== Overlay ===== */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 15, 15, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-/* ===== Modal ===== */
-.modal {
-  background: #fff;
-  width: 95vw; /* Almost full width of viewport */
-  max-width: 1200px; /* Prevents it from being too big on large monitors */
-  height: 95vh; /* Almost full height of viewport */
-  border-radius: 12px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.3);
-  transform: translateY(-20px);
-  animation: slideUp 0.3s ease forwards;
-}
-
-
-/* ===== Close Button ===== */
-.close-btn {
-  background: none;
-  border: none;
-  color: #444;
-  font-size: 18px;
-  padding: 10px;
-  align-self: flex-end;
-  cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.close-btn:hover {
-  transform: scale(1.2);
-  color: #e63946;
-}
-
-/* ===== Iframe ===== */
-.modal iframe {
-  flex: 1;
-  border: none;
-}
-
-/* ===== Buttons ===== */
-.icon-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  background: linear-gradient(135deg, #007bff, #00b4d8);
-  color: white;
-  font-weight: 500;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.icon-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.4);
-}
-
-/* ===== Animations ===== */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { transform: translateY(50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-/* ===== Mobile Responsiveness ===== */
-@media (max-width: 768px) {
-  .modal {
-    width: 95%;
-    height: 85vh;
-  }
-
-  .icon-btn {
-    padding: 8px 12px;
-    font-size: 14px;
-  }
-}
-
-/* Global */
+/* ===== Global Styles ===== */
 body {
-  font-family: "Segoe UI", sans-serif;
-  background: #f4f7fb;
+  font-family: "Poppins", sans-serif;
+  background: #f0f2f5; /* Light grey/blue background */
   margin: 0;
   padding: 0;
-  color: #333;
+  color: #333333; /* Darker text for better readability */
 }
 
 .app {
-  max-width: 900px;
+  max-width: 950px;
   margin: 40px auto;
   padding: 20px;
+  background-color: #ffffff; /* White background for the app content area */
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
-  color: #2c3e50;
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+  color: #007bff; /* Using the accent blue */
+  font-weight: 700;
 }
 
-/* Subject Card */
+h1 span {
+  font-size: 1.1rem;
+  color: #666666; /* Subtle text color */
+  font-weight: 400;
+}
+
+/* ===== Login Screen ===== */
+/* Removed custom login-screen styles, now using Bootstrap */
+
+/* Removed custom login-card styles, now using Bootstrap */
+
+/* Removed custom login-title styles, now using Bootstrap */
+
+/* Removed custom login-subtitle styles, now using Bootstrap */
+
+/* Removed custom login-btn-google styles, now using Bootstrap */
+/* .login-btn-google .google-icon { 
+  font-size: 1.5rem; 
+  filter: grayscale(100%) brightness(200%); 
+} */
+
+/* ===== User Info Card ===== */
+.app-header {
+  display: flex;
+  justify-content: space-between; /* Space out title and user info */
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px; /* Add some padding at the bottom */
+  border-bottom: 1px solid #e0e0e0; /* Subtle separator */
+}
+
+.app-header h1 {
+  margin: 0; /* Remove default margin from h1 in header */
+  text-align: left; /* Align title to the left */
+}
+
+.user-info-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #f8f9fa; /* Lighter background for the card */
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0; /* Subtle border */
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #007bff;
+  object-fit: cover; /* Ensure image covers the area */
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #333333; /* Darker text */
+}
+
+.user-email {
+  font-size: 0.85rem;
+  color: #666666; /* Subtle text color */
+}
+
+.logout-btn {
+  background: #dc3545; /* Bootstrap danger red */
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #c82333; /* Darker red on hover */
+}
+
+/* ===== Subject Card ===== */
 .subject-card {
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
+  background: #ffffff; /* White background */
+  border-radius: 16px;
+  padding: 24px;
   margin-bottom: 25px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06); /* Softer shadow */
+  backdrop-filter: blur(8px); /* Slightly less blur */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #f0f0f0; /* Very subtle border */
+}
+
+.subject-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1); /* Enhanced shadow on hover */
 }
 
 .subject-card h2 {
   margin-top: 0;
   color: #007bff;
+  font-size: 1.6rem;
+  border-left: 4px solid #007bff;
+  padding-left: 12px;
 }
 
-/* Chapter */
-.chapter {
-  margin-top: 15px;
+/* ===== Chapter & File Styles ===== */
+.chapter { margin-top: 18px; }
+.chapter-header { 
+  display: flex; 
+  align-items: center; 
+  cursor: pointer; 
+  padding: 12px 18px; /* Increased horizontal padding */
+  background: #f8f9fa; /* Lighter background */
+  border-radius: 10px; 
+  margin-bottom: 10px; 
+  font-weight: 500; 
+  color: #333333; /* Darker text */
+  transition: background 0.2s ease, transform 0.15s ease; 
+  border: 1px solid #e9ecef; /* Subtle border */
+}
+.chapter-header:hover { 
+  background: #e2e6ea; /* Slightly darker on hover */
+  transform: translateX(4px); 
+}
+.chapter-title { display: flex; align-items: center; gap: 10px; font-size: 1rem; color: #007bff; /* Accent color for title */ }
+.file-list { margin-left: 20px; margin-top: 10px; padding-left: 10px; border-left: 2px dashed #cccccc; /* Lighter dashed border */ }
+.file-row { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 10px 18px; /* Increased horizontal padding */
+  background: #ffffff; /* White background */
+  border-radius: 10px; 
+  margin-bottom: 8px; 
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05); /* Softer shadow */
+  transition: transform 0.15s ease, box-shadow 0.15s ease; 
+  border: 1px solid #f0f0f0; /* Subtle border */
+}
+.file-row:hover { 
+  transform: scale(1.01); /* Slightly less aggressive scale */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Softer shadow on hover */
+}
+.file-name { flex: 1; font-size: 0.95rem; color: #333333; /* Darker text */ }
+.file-actions { display: flex; gap: 14px; }
+.file-actions a, .file-actions button { 
+  background: none; 
+  border: none; 
+  color: #007bff; 
+  font-size: 18px; 
+  cursor: pointer; 
+  padding: 6px; 
+  transition: color 0.2s ease, transform 0.2s ease; 
+}
+.file-actions a:hover, .file-actions button:hover { 
+  color: #0056b3; 
+  transform: scale(1.1); /* Slightly less aggressive scale */
 }
 
-.chapter h3 {
-  margin-bottom: 10px;
-  color: #34495e;
-  font-size: 18px;
+/* ===== Modal, Loader & Animations ===== */
+.overlay { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background: rgba(0, 0, 0, 0.7); /* Darker overlay */
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  z-index: 999; 
+  animation: fadeIn 0.35s ease-in-out; 
 }
+.modal { 
+  background: #ffffff; /* White modal background */
+  width: 95vw; 
+  max-width: 1200px; 
+  height: 90vh; 
+  border-radius: 18px; 
+  overflow: hidden; 
+  display: flex; 
+  flex-direction: column; 
+  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.3); /* More prominent shadow */
+  transform: scale(0.9); 
+  animation: scaleUp 0.3s ease forwards; 
+}
+.close-btn { 
+  background: #dc3545; /* Bootstrap danger red */
+  border: none; 
+  color: #fff; 
+  font-size: 18px; 
+  padding: 8px 14px; 
+  margin: 10px; /* Slightly more margin */
+  border-radius: 6px; 
+  align-self: flex-end; 
+  cursor: pointer; 
+  transition: background 0.2s ease, transform 0.2s ease; 
+}
+.close-btn:hover { 
+  background: #c82333; /* Darker red on hover */
+  transform: scale(1.05); /* Slightly less aggressive scale */
+}
+.modal iframe { flex: 1; border: none; }
+.loader-container { display: flex; justify-content: center; align-items: center; height: 100%; }
+.loader { border: 4px solid #f3f3f3; border-top: 4px solid #007bff; border-radius: 50%; width: 45px; height: 45px; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleUp { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-/* Buttons container */
-.file-buttons {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.icon-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.icon-btn:hover {
-  background: #0056b3;
-  transform: translateY(-2px);
-}
-
-/* Modal Overlay */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-}
-
-/* Modal */
-.modal {
-  background: white;
-  width: 90%;
-  max-width: 900px;
-  height: 90vh;
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-  animation: scaleUp 0.2s ease;
-}
-
-@keyframes scaleUp {
-  from { transform: scale(0.95); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-/* Modal iframe */
-.modal iframe {
-  flex: 1;
-  border: none;
-}
-
-/* Close Button */
-.close-btn {
-  background: #e74c3c;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 14px;
-  align-self: flex-end;
-}
-
-.close-btn:hover {
-  background: #c0392b;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .icon-btn {
-    font-size: 12px;
-    padding: 6px 10px;
-  }
-}
-.chapter-header {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  padding: 10px 12px;
-  background: #f0f4f8;
-  border-radius: 6px;
-  margin-bottom: 8px;
-  font-weight: 500;
-  transition: background 0.2s ease;
-}
-
-.chapter-header:hover {
-  background: #e2e8f0;
-}
-
-.chapter-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.file-list {
-  margin-left: 15px;
-  margin-top: 8px;
-}
-
-.file-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 12px;
-  background: white;
-  border-radius: 6px;
-  margin-bottom: 6px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-}
-
-.file-name {
-  flex: 1;
-}
-
-.file-actions {
-  display: flex;
-  gap: 12px;
-}
-
-.file-actions a,
-.file-actions button {
-  background: none;
-  border: none;
-  color: #007bff;
-  font-size: 18px;
-  cursor: pointer;
-  padding: 4px;
-}
-
-.file-actions a:hover,
-.file-actions button:hover {
-  color: #0056b3;
-}
-.loader-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.loader {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #007bff;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+/* ===== Responsive (Original styles are fine) ===== */
+@media (max-width: 768px) { .modal { width: 95%; height: 85vh; } h1 { font-size: 1.8rem; } .subject-card h2 { font-size: 1.3rem; } }
