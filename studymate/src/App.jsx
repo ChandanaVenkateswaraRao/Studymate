@@ -24,6 +24,11 @@ const data = {
       { name: "kurutsuba.pdf", path: "/daa/unit2/kurutsuba.pdf" },
       { name: "obst.pdf", path: "/daa/unit2/obst.pdf" },
       { name: "strassenmatrix.pdf", path: "/daa/unit2/strassenmatrix.pdf" }
+    ],
+    "Chapter 3":[
+      {name : "branch and bound introduction ", path : "daa/unit3/branch and bound introduction.pdf"},
+      {name : "Task Sheduling and Knapsack", path : "/daa/unit3/TaskShedulingandKnapsack.pdf"},
+      {name : "Backtracking Queen,hamiltanion and subset sum ", path : "daa/unit3/Backtracking Queen,hamiltanion and subset sum File.pdf"}
     ]
   },
   SE :{
@@ -32,6 +37,10 @@ const data = {
     ],
     "Chapter 2":[
       {name : "Unit2" , path : "/se/Unit-2_SE-Material.pdf"}
+    ],
+    "Chapter 4":[
+      {name : "Unit4" , path : "/se/Unit 4- SE (1).pdf"},
+      {name : "WHITE BOX TESTING" , path : "/se/WHITE BOX TESTING.pdf"},
     ]
   },
    OS :{
@@ -49,6 +58,9 @@ const data = {
   CN: {
     "Chapter" : [
       {name : "Unit 1 & 2 " , path : "/CN/212CSE3302_Unit 1 Notes_compressed.pdf"},
+      {name : "Unit 3 " , path : "/CN/Unit-3-Notes.pdf"},
+      {name : "Unit 4 " , path : "/CN/Unit-4-Notes.pdf"},
+
     ],
   },
   QUESTION_PAPERS : {
