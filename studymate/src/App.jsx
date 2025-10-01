@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { auth, signInWithGoogle } from "./firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { FaDownload, FaEye, FaChevronDown, FaChevronRight } from "react-icons/fa";
@@ -78,6 +78,9 @@ export default function App() {
   const [currentFile, setCurrentFile] = useState(null);
   const [openChapters, setOpenChapters] = useState({});
   const [loading, setLoading] = useState(false);
+  const [modalWidth, setModalWidth] = useState(1200); // Initial width
+  const [modalHeight, setModalHeight] = useState(800); // Initial height
+  const [isResizing, setIsResizing] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -102,6 +105,39 @@ export default function App() {
     await signOut(auth);
     setUser(null);
   };
+
+  const handleMouseDown = (e) => {
+    setIsResizing(true);
+    e.preventDefault();
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isResizing) return;
+
+    setModalWidth(Math.max(300, e.clientX - modalRef.current.offsetLeft));
+    setModalHeight(Math.max(200, e.clientY - modalRef.current.offsetTop));
+  };
+
+  const handleMouseUp = () => {
+    setIsResizing(false);
+  };
+
+  useEffect(() => {
+    if (isResizing) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+    } else {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    }
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isResizing]);
+
+  // Create a ref for the modal to get its position
+  const modalRef = useRef(null);
 
   // ========= If user not logged in, show login screen =========
   if (!user) {
@@ -190,7 +226,7 @@ export default function App() {
       {/* === Modal Viewer (No changes needed here) === */}
       {isOpen && (
         <div className="overlay" onClick={() => setIsOpen(false)}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <div className="modal" ref={modalRef} style={{ width: modalWidth, height: modalHeight }} onClick={(e) => e.stopPropagation()}>
             <button className="close-btn" onClick={() => setIsOpen(false)}>✖</button>
             {loading && (
               <div className="loader-container">
@@ -205,6 +241,7 @@ export default function App() {
               onLoad={() => setLoading(false)}
               style={{ display: loading ? "none" : "block" }}
             ></iframe>
+            <div className="resize-handle" onMouseDown={handleMouseDown}></div>
           </div>
         </div>
       )}
