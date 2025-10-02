@@ -8,7 +8,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import Top from "./Top.jsx";
 import { FcGoogle } from "react-icons/fc"; // Import Google icon
-
+import Footer from "./Footer.jsx";
 // Your data object remains the same
 const data = {
   DAA: {
@@ -268,6 +268,7 @@ if (!user) {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 }
