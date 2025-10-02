@@ -1,82 +1,149 @@
 /* ===== Global Styles ===== */
+:root {
+  --background-start: #0f0c29;
+  --background-mid: #302b63;
+  --background-end: #24243e;
+
+  --gradient-primary-start: #ff7e5f;
+  --gradient-primary-end: #feb47b;
+
+  --gradient-secondary-start: #00c9ff;
+  --gradient-secondary-end: #92fe9d;
+
+  --accent-color: #ff7e5f;
+  --text-primary: #ffffff;
+  --text-secondary: #c0c0d0;
+
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.2);
+}
+
 body {
   font-family: "Poppins", sans-serif;
-  background: #f0f2f5; /* Light grey/blue background */
+  background: linear-gradient(135deg, var(--background-start), var(--background-mid), var(--background-end));
+  background-attachment: fixed;
   margin: 0;
   padding: 0;
-  color: #333333; /* Darker text for better readability */
+  color: var(--text-primary);
 }
 
-.app {
-  max-width: 950px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #ffffff; /* White background for the app content area */
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+/* ===== Login Screen ("Aurora Glow" Theme) ===== */
+.login-screen {
+  background: linear-gradient(135deg, var(--background-start), var(--background-mid), var(--background-end));
+  background-attachment: fixed;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 40px;
+.login-screen .card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 var(--glass-shadow);
+  border-radius: 16px;
+  max-width: 450px;
+  width: 90%;
+}
+
+.login-screen h1 {
   font-size: 2.2rem;
-  color: #007bff; /* Using the accent blue */
   font-weight: 700;
+  background: linear-gradient(90deg, var(--gradient-primary-start), var(--gradient-primary-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(254, 180, 123, 0.3);
+  margin-bottom: 0.75rem;
 }
 
-h1 span {
-  font-size: 1.1rem;
-  color: #666666; /* Subtle text color */
+.login-screen p.lead {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
   font-weight: 400;
 }
 
-/* ===== Login Screen ===== */
-/* Removed custom login-screen styles, now using Bootstrap */
+.login-screen p b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
 
-/* Removed custom login-card styles, now using Bootstrap */
+.login-screen .btn-primary {
+  background: linear-gradient(90deg, var(--gradient-secondary-start), var(--gradient-secondary-end));
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  color: #141414;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 201, 255, 0.3);
+}
 
-/* Removed custom login-title styles, now using Bootstrap */
+.login-screen .btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(0, 201, 255, 0.5);
+}
 
-/* Removed custom login-subtitle styles, now using Bootstrap */
+.login-screen .btn-primary .me-2 {
+  font-size: 1.5rem;
+}
 
-/* Removed custom login-btn-google styles, now using Bootstrap */
-/* .login-btn-google .google-icon { 
-  font-size: 1.5rem; 
-  filter: grayscale(100%) brightness(200%); 
-} */
+
+/* ===== Main App Styles ===== */
+.app {
+  max-width: 950px;
+  margin: 0px auto;
+  padding: 20px;
+  background: transparent;
+  border-radius: 18px;
+}
+
+.app h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--gradient-primary-start), var(--gradient-primary-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(254, 180, 123, 0.3);
+}
+
+.app h1 span {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  -webkit-text-fill-color: var(--text-secondary); /* Reset for span */
+}
 
 /* ===== User Info Card ===== */
 .app-header {
   display: flex;
-  justify-content: space-between; /* Space out title and user info */
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
-  padding-bottom: 20px; /* Add some padding at the bottom */
-  border-bottom: 1px solid #e0e0e0; /* Subtle separator */
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 var(--glass-shadow);
 }
 
 .app-header h1 {
-  margin: 0; /* Remove default margin from h1 in header */
-  text-align: left; /* Align title to the left */
+  margin: 0;
+  text-align: left;
 }
 
 .user-info-card {
   display: flex;
   align-items: center;
   gap: 15px;
-  background: #f8f9fa; /* Lighter background for the card */
-  padding: 12px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e0e0e0; /* Subtle border */
 }
 
 .profile-pic {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 2px solid #007bff;
-  object-fit: cover; /* Ensure image covers the area */
+  border: 2px solid var(--accent-color);
+  object-fit: cover;
 }
 
 .user-details {
@@ -87,105 +154,129 @@ h1 span {
 
 .user-name {
   font-weight: 600;
-  color: #333333; /* Darker text */
+  color: var(--text-primary);
 }
 
 .user-email {
   font-size: 0.85rem;
-  color: #666666; /* Subtle text color */
+  color: var(--text-secondary);
 }
 
 .logout-btn {
-  background: #dc3545; /* Bootstrap danger red */
+  background: linear-gradient(90deg, var(--gradient-primary-start), var(--gradient-primary-end));
   border: none;
   color: white;
-  padding: 8px 16px;
-  border-radius: 8px;
+  padding: 10px 20px;
+  border-radius: 25px;
   cursor: pointer;
-  font-weight: 500;
-  transition: background 0.2s ease;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 126, 95, 0.4);
 }
 
 .logout-btn:hover {
-  background: #c82333; /* Darker red on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 126, 95, 0.6);
 }
 
 /* ===== Subject Card ===== */
 .subject-card {
-  background: #ffffff; /* White background */
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
   border-radius: 16px;
   padding: 24px;
   margin-bottom: 25px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06); /* Softer shadow */
-  backdrop-filter: blur(8px); /* Slightly less blur */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid #f0f0f0; /* Very subtle border */
+  box-shadow: 0 8px 32px 0 var(--glass-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .subject-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.1); /* Enhanced shadow on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 .subject-card h2 {
   margin-top: 0;
-  color: #007bff;
   font-size: 1.6rem;
-  border-left: 4px solid #007bff;
   padding-left: 12px;
+  border-left: 4px solid;
+  border-image: linear-gradient(to bottom, var(--gradient-secondary-start), var(--gradient-secondary-end)) 1;
+  color: var(--text-primary);
 }
 
 /* ===== Chapter & File Styles ===== */
 .chapter { margin-top: 18px; }
-.chapter-header { 
-  display: flex; 
-  align-items: center; 
-  cursor: pointer; 
-  padding: 12px 18px; /* Increased horizontal padding */
-  background: #f8f9fa; /* Lighter background */
-  border-radius: 10px; 
-  margin-bottom: 10px; 
-  font-weight: 500; 
-  color: #333333; /* Darker text */
-  transition: background 0.2s ease, transform 0.15s ease; 
-  border: 1px solid #e9ecef; /* Subtle border */
+.chapter-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: background 0.2s ease, transform 0.15s ease;
+  border: 1px solid var(--glass-border);
 }
-.chapter-header:hover { 
-  background: #e2e6ea; /* Slightly darker on hover */
-  transform: translateX(4px); 
+.chapter-header:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
 }
-.chapter-title { display: flex; align-items: center; gap: 10px; font-size: 1rem; color: #007bff; /* Accent color for title */ }
-.file-list { margin-left: 20px; margin-top: 10px; padding-left: 10px; border-left: 2px dashed #cccccc; /* Lighter dashed border */ }
-.file-row { 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  padding: 10px 18px; /* Increased horizontal padding */
-  background: #ffffff; /* White background */
-  border-radius: 10px; 
-  margin-bottom: 8px; 
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05); /* Softer shadow */
-  transition: transform 0.15s ease, box-shadow 0.15s ease; 
-  border: 1px solid #f0f0f0; /* Subtle border */
+.chapter-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: var(--text-secondary);
 }
-.file-row:hover { 
-  transform: scale(1.01); /* Slightly less aggressive scale */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Softer shadow on hover */
+.file-list {
+  margin-left: 20px;
+  margin-top: 10px;
+  padding-left: 10px;
+  border-left: 2px dashed var(--glass-border);
 }
-.file-name { flex: 1; font-size: 0.95rem; color: #333333; /* Darker text */ }
-.file-actions { display: flex; gap: 14px; }
-.file-actions a, .file-actions button { 
-  background: none; 
-  border: none; 
-  color: #007bff; 
-  font-size: 18px; 
-  cursor: pointer; 
-  padding: 6px; 
-  transition: color 0.2s ease, transform 0.2s ease; 
+.file-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 18px;
+  background: transparent;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
 }
-.file-actions a:hover, .file-actions button:hover { 
-  color: #0056b3; 
-  transform: scale(1.1); /* Slightly less aggressive scale */
+.file-row:hover {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  transform: scale(1.02);
+}
+.file-name {
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+.file-actions {
+  display: flex;
+  gap: 14px;
+}
+.file-actions a,
+.file-actions button {
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 6px;
+  transition: color 0.2s ease, transform 0.2s ease;
+  text-shadow: 0 0 10px rgba(255, 126, 95, 0.5);
+}
+.file-actions a:hover,
+.file-actions button:hover {
+  color: #fff;
+  transform: scale(1.2);
 }
 
 /* ===== Modal, Loader & Animations ===== */
@@ -195,28 +286,27 @@ h1 span {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Align modal to the top */
-  padding-top: 0px;
-  padding-bottom: 10px; /* Add padding to give space from the top */
+  align-items: center;
   z-index: 1000;
-  backdrop-filter: blur(5px); /* Frosted glass effect */
+  backdrop-filter: blur(10px);
 }
 
 .modal {
-  background: #fff;
-  border-radius: 12px; /* Softer corners */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+  background: rgba(40, 40, 60, 0.8);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   width: 80%;
-  height: 80%;
-  max-width: 1200px; /* Limit max width */
-  max-height: 700px; /* Limit max height */
-  position: relative; /* Needed for absolute positioning of resize handle */
+  height: 90%;
+  max-width: 1200px;
+  position: relative;
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Ensure content stays within bounds */
+  overflow: hidden;
 }
 
 .resize-handle {
@@ -225,20 +315,20 @@ h1 span {
   right: 0;
   width: 20px;
   height: 20px;
-  background: #3498db; /* Blue handle */
-  cursor: se-resize; /* South-east resize cursor */
-  border-bottom-right-radius: 12px; /* Match modal corner */
-  z-index: 1002; /* Ensure it's above other elements */
+  background: var(--accent-color);
+  cursor: se-resize;
+  border-bottom-right-radius: 12px;
+  z-index: 1002;
 }
 
 .close-btn {
   position: absolute;
-  top: 55px;
+  top: 15px;
   right: 15px;
-  background: #ff4d4d; /* Reddish close button */
+  background: rgba(0, 0, 0, 0.4);
   color: white;
-  border: none;
-  border-radius: 50%; /* Circular button */
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
   width: 35px;
   height: 35px;
   font-size: 1.2rem;
@@ -246,39 +336,40 @@ h1 span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background 0.3s ease; /* Smooth transition */
-  z-index: 1003; /* Ensure it's above the resize handle */
+  transition: all 0.3s ease;
+  z-index: 1003;
 }
 
 .close-btn:hover {
-  background: #cc0000; /* Darker red on hover */
+  background: var(--accent-color);
+  transform: rotate(90deg);
 }
 
 .modal iframe {
   flex: 1;
   border: none;
-  z-index: 1; /* Ensure iframe is below close button */
+  z-index: 1;
 }
 .loader-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90%;
+  height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(15, 12, 41, 0.5);
   z-index: 10;
 }
 
 .loader {
-  border: 8px solid #f3f3f3; /* Light grey */
-  border-top: 8px solid #3498db; /* Blue */
+  border: 8px solid rgba(255, 255, 255, 0.2);
+  border-top: 8px solid var(--accent-color);
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  animation: spin 2s linear infinite;
+  animation: spin 1.5s linear infinite;
 }
 
 @keyframes spin {
@@ -286,8 +377,91 @@ h1 span {
   100% { transform: rotate(360deg); }
 }
 
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes scaleUp { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .app {
+    margin: 0px auto;
+  }
+  .modal {
+    width: 95%;
+    height: 85vh;
+  }
+  .app h1 { font-size: 2rem; }
+  .subject-card h2 { font-size: 1.4rem; }
+  .app-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
 
-/* ===== Responsive (Original styles are fine) ===== */
-@media (max-width: 768px) { .modal { width: 95%; height: 85vh; } h1 { font-size: 1.8rem; } .subject-card h2 { font-size: 1.3rem; } }
+
+
+
+
+/* login screen */
+
+/* ===== Login Screen ("Aurora Glow" Theme) ===== */
+
+/* This targets the main div and applies the gradient background */
+.login-screen {
+  background: linear-gradient(135deg, var(--background-start), var(--background-mid), var(--background-end));
+  background-attachment: fixed;
+}
+
+/* This styles the login box with the "glassmorphism" effect */
+.login-screen .card {
+  background: rgba(255, 255, 255, 0.08);      /* Semi-transparent white */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+  backdrop-filter: blur(10px);                /* The frosted glass blur effect */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  border-radius: 16px;                        /* Rounded corners */
+  max-width: 450px;
+  width: 90%;
+}
+
+/* Styles the main "PDF Viewer" title with a text gradient */
+.login-screen h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--gradient-primary-start), var(--gradient-primary-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(254, 180, 123, 0.3);
+  margin-bottom: 0.75rem;
+}
+
+/* Styles the subtitle text */
+.login-screen p.lead {
+  color: var(--text-secondary); /* Uses the soft, secondary text color */
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+/* Makes the bolded email domain stand out more */
+.login-screen p b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Completely transforms the Google sign-in button */
+.login-screen .btn-primary {
+  background: linear-gradient(90deg, var(--gradient-secondary-start), var(--gradient-secondary-end));
+  border: none;
+  border-radius: 25px; /* Pill shape */
+  font-weight: 600;
+  color: #141414;      /* Dark text for contrast */
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 201, 255, 0.3); /* Adds a soft glow */
+}
+
+/* Adds a hover effect to the button */
+.login-screen .btn-primary:hover {
+  transform: translateY(-3px); /* Lifts the button slightly */
+  box-shadow: 0 6px 25px rgba(0, 201, 255, 0.5); /* Enhances the glow */
+}
+
+/* Styles the Google icon */
+.login-screen .btn-primary .me-2 {
+  font-size: 1.5rem;
+}

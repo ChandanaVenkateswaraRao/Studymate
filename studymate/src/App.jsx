@@ -38,30 +38,54 @@ const data = {
     "Chapter 2":[
       {name : "Unit2" , path : "/se/Unit-2_SE-Material.pdf"}
     ],
+    "Chapter 3" : [
+      {name : "Unit 3 " , path : "/se/Unit 3- SE.pdf"},
+    ],
     "Chapter 4":[
       {name : "Unit4" , path : "/se/Unit 4- SE (1).pdf"},
       {name : "WHITE BOX TESTING" , path : "/se/WHITE BOX TESTING.pdf"},
     ]
   },
    OS :{
-    "Chapter" : [
+    "Chapter 1 & 2" : [
       {name : "Unit 1 & 2 " , path : "/os/OS Notes.pdf"},
       {name : "Bankers Algorithm" , path : "/os/Bankers.pdf"},
     ],
+    "Chapter 3 & 4" : [
+      {name : "Unit 3 & 4 " , path : "/os/unit3&4.pdf"},
+    ],
   },
    DL : {
-    "Chapter" : [
+    "Chapter 1 & 2" : [
       {name : "Unit 1 & 2 " , path : "/DL/DL UNIT 1 & 2 HANDWRITTEN NOTES.pdf"},
       {name : "Backward Propagation" , path : "/DL/AMG DEEP LEARNING BACKPROPOGATION.pdf"},
     ],
+    "Chapter 3" : [
+      {name : "Unit 3 " , path : "/DL/unit3.pdf"},
+      {name : "CNN PPT ", path : "/DL/cnn ppt.pdf"},
+      {name : "Padding ", path : "/DL/padding.pdf"},
+    ],
+    "Chapter 4" : [
+      {name : "Unit 4 " , path : "/DL/unit4.pdf"},
+      {name : "GRU", path : "/DL/GRU.pdf"},
+      {name : "Introduction to RNN", path : "/DL/Introduction  to RNN.pdf"},
+      {name : "RNN", path : "/DL/RNN.pdf"},
+    ]
   },
   CN: {
-    "Chapter" : [
+    "Chapter 1 & 2" : [
       {name : "Unit 1 & 2 " , path : "/CN/212CSE3302_Unit 1 Notes_compressed.pdf"},
       {name : "Unit 3 " , path : "/CN/Unit-3-Notes.pdf"},
       {name : "Unit 4 " , path : "/CN/Unit-4-Notes.pdf"},
 
     ],
+    "Chapter 3 " : [
+      {name : "Unit 3 " , path : "/CN/Unit-3-Notes.pdf"},
+    ],
+    "Chapter 4" : [
+      {name : "Unit 4 " , path : "/CN/Unit-4-Notes.pdf"},
+    ]
+
   },
   QUESTION_PAPERS : {
     "QUESTION_PAPERS" : [
@@ -138,22 +162,21 @@ export default function App() {
 
   // Create a ref for the modal to get its position
   const modalRef = useRef(null);
-
-  // ========= If user not logged in, show login screen =========
-  if (!user) {
-    return (
-      <div className="d-flex flex-column align-items-center justify-content-center vh-100 bg-light">
-        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
-        <div className="card shadow p-4 p-md-5 rounded-lg text-center" style={{ maxWidth: '450px', width: '100%' }}>
-          <h1 className="mb-3 text-primary">📚 PDF Viewer</h1>
-          <p className="lead text-muted mb-4">Please sign in with your <b>@klu.ac.in</b> email to continue.</p>
-          <button className="btn btn-primary btn-lg w-100 d-flex align-items-center justify-content-center" onClick={handleLogin}>
-            <FcGoogle className="me-2" /> Sign in with Google
-          </button>
-        </div>
+// ========= If user not logged in, show login screen =========
+if (!user) {
+  return (
+    <div className="login-screen d-flex flex-column align-items-center justify-content-center vh-100">
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} theme="dark" />
+      <div className="card shadow p-4 p-md-5 rounded-lg text-center" style={{ maxWidth: '450px', width: '100%' }}>
+        <h1 className="mb-3 text-primary">📚 PDF Viewer</h1>
+        <p className="lead text-muted mb-4">Please sign in with your <b>@klu.ac.in</b> email to continue.</p>
+        <button className="btn btn-primary btn-lg w-100 d-flex align-items-center justify-content-center" onClick={handleLogin}>
+          <FcGoogle className="me-2" /> Sign in with Google
+        </button>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   // ========= If logged in, show app =========
   return (
@@ -161,7 +184,7 @@ export default function App() {
       {/* <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} /> Removed from here */}
       {/* <Top /> */}
       <div className="app-header">
-        <h1>PDF Viewer <br /> <br /> <span>BTECH CSE - 3rd YEAR</span></h1>
+        <h1>PDF Viewer <br />  <span>BTECH CSE - 3rd YEAR</span></h1>
         <div className="user-info-card">
           <img src={user.photoURL} alt="profile" className="profile-pic" />
           <div className="user-details">
